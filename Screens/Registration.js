@@ -40,7 +40,7 @@ function Registration(props) {
     setName('');
     setEndDate('');
     setStartDate('');
-    props.navigation.navigate('MainRoute');
+    props.navigation.goBack();
   }
   // addDoc(collection(db, 'Task'), {
   //   Name: name,

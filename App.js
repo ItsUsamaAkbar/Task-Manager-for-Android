@@ -41,6 +41,7 @@ import Login from './Screens/Login';
 import Main from './Screens/Main';
 import Signup from './Screens/SignUp';
 import Registration from './Screens/Registration';
+import Document from './Screens/Document';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import NavigationService from './NavigationServices';
@@ -60,6 +61,7 @@ const MainStack = createStackNavigator(
   {
     MainRoute: Main,
     RegRoute: Registration,
+    DocRoute: Document,
   },
   {
     defaultNavigationOptions: {

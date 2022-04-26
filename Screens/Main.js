@@ -27,9 +27,7 @@ import {
   addDoc,
   collection,
 } from 'firebase/firestore/lite';
-import NavigationService from '../NavigationServices';
-import Registration from './Registration';
-function Main(props, route) {
+function Main(props) {
   const [list, setlist] = useState('');
   const [uid, setUID] = useState('');
   useEffect(() => {
@@ -52,7 +50,13 @@ function Main(props, route) {
     const docRef = doc(db, 'users', uid);
     const colRef = collection(docRef, 'Task');
     const tasksnapshot = await getDocs(colRef);
-    const tasklist = tasksnapshot.docs.map((doc) => doc.data());
+    const tasklist = tasksnapshot.docs.map((doc) => ({
+      id: doc.id,
+      Name: doc.data().Name,
+      StartDate: doc.data().StartDate,
+      EndDate: doc.data().EndDate,
+      Discription: doc.data().Discription,
+    }));
     setlist(tasklist);
   };
 
@@ -81,7 +85,14 @@ function Main(props, route) {
         <ScrollView>
           {list.length > 0
             ? list.map((Task, key) => (
-                <TouchableOpacity style={styles.card}>
+                <TouchableOpacity
+                  onPress={() =>
+                    props.navigation.navigate('DocRoute', {
+                      Doci: Task.id,
+                      UID: uid,
+                    })
+                  }
+                  style={styles.card}>
                   <View style={styles.text}>
                     <Text style={{fontSize: 17}}>{Task.Name}</Text>
                   </View>

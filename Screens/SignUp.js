@@ -35,10 +35,6 @@ function Singup(props) {
           UID: register.user.uid,
         });
       })
-      .then((re) => {
-        console.log(re);
-        setSingin(true);
-      })
       .catch((err) => {
         switch (err.code) {
           case 'auth/email-already-exists':
@@ -49,6 +45,8 @@ function Singup(props) {
             setPassworderror(err.message);
         }
       });
+
+    props.navigation.navigate('LoginRoute');
     console.log('user created');
   }
 

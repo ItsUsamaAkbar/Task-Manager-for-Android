@@ -17,7 +17,7 @@ import {Divider} from 'react-native-paper';
 import Main from './Main';
 import Registration from './Registration';
 function Login(props) {
-  const [email, setEmail] = useState('wa@gmail.com');
+  const [email, setEmail] = useState('usama@gmail.com');
   const [uid, setUID] = useState('');
   const [password, setPassword] = useState('walker123');
   const [emailerr, setEmailerror] = useState('');
@@ -29,7 +29,6 @@ function Login(props) {
       .then((register) => {
         console.log(register.user.uid);
         setUID(register.user.uid);
-
         console.log('navigating to main');
         props.navigation.navigate('MainRoute', {
           USERid: register.user.uid,
